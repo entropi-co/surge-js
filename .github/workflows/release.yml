@@ -103,9 +103,7 @@ jobs:
 
           echo "Publishing surge-js now..."
 
-          npm publish --tag "$DIST_TAG"
-
-          npm publish --tag "$DIST_TAG"
+          npm publish --access=public --tag "$DIST_TAG"
 
       - name: Create GitHub release and branches
         if: ${{ steps.release.outputs.release_created == 'true' || steps.release.outputs.prs_created == 'true' }}
