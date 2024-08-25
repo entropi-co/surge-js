@@ -84,7 +84,7 @@ jobs:
           yarn install --immutable
           yarn build
 
-          for f in package.json package-lock.json jsr.json
+          for f in package.json jsr.json
           do
             sed -i 's|"version": "0.0.0",|"version": "'"$RELEASE_VERSION"'",|g' "$f"
           done
