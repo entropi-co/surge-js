@@ -7,24 +7,12 @@ on:
       - release/*
 
 jobs:
-  publish_to_jsr:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      id-token: write
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Publish package
-        run: npx jsr publish
-
   release_please:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
+      id-token: write
     steps:
       - uses: google-github-actions/release-please-action@v4
         id: release
@@ -156,3 +144,6 @@ jobs:
                 fi
               fi
           fi
+
+      - name: Publish package to JSR
+        run: npx jsr publish
