@@ -83,6 +83,8 @@ jobs:
 
           yarn install --immutable
           yarn build
+          
+          echo "export const version = '$RELEASE_VERSION'" > src/lib/version.ts
 
           for f in package.json jsr.json
           do
@@ -144,4 +146,7 @@ jobs:
           fi
 
       - name: Publish package to JSR
-        run: npx jsr publish
+        run: |
+          # Discard package.json change to 
+          git checkout -- package.json
+          npx jsr publish
