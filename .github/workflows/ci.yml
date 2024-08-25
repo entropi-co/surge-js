@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
       - next
       - rc
   workflow_dispatch:
@@ -29,5 +29,5 @@ jobs:
 
       - name: Build
         run: |
-          npm ci
-          npm run build
+          yarn install --immutable
+          yarn build

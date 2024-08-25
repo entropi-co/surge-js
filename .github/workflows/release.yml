@@ -83,13 +83,17 @@ jobs:
 
           yarn install --immutable
           yarn build
-          
+
           echo "export const version = '$RELEASE_VERSION'" > src/lib/version.ts
 
           for f in package.json jsr.json
           do
             sed -i 's|"version": "0.0.0",|"version": "'"$RELEASE_VERSION"'",|g' "$f"
           done
+
+          echo "Publishing surge-js to JSR"
+          
+          npx jsr publish --allow-dirty
 
           echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}' > ~/.npmrc
 
@@ -103,7 +107,7 @@ jobs:
             DIST_TAG=latest
           fi
 
-          echo "Publishing surge-js now..."
+          echo "Publishing surge-js to npm"
 
           npm publish --access=public --tag "$DIST_TAG"
 
@@ -144,9 +148,3 @@ jobs:
                 fi
               fi
           fi
-
-      - name: Publish package to JSR
-        run: |
-          # Discard package.json change to 
-          git checkout -- package.json
-          npx jsr publish
