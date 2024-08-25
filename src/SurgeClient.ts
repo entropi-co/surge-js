@@ -512,7 +512,14 @@ export default class SurgeClient {
    * against using this method and its results in such circumstances. A warning
    * will be emitted if this is detected. Use {@link #getUser()} instead.
    */
-  async getSession() {
+  async getSession(): Promise<
+    | { data: { session: Session }; error: null }
+    | {
+        data: { session: null }
+        error: AuthError
+      }
+    | { data: { session: null }; error: null }
+  > {
     await this.initializePromise
 
     return await this._acquireLock(-1, async () => {

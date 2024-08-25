@@ -3,7 +3,7 @@ import { supportsLocalStorage } from './helpers'
 /**
  * @experimental
  */
-export const internals = {
+export const internals: { debug: boolean } = {
   /**
    * @experimental
    */

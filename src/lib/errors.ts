@@ -92,7 +92,12 @@ export class AuthImplicitGrantRedirectError extends CustomAuthError {
     this.details = details
   }
 
-  toJSON() {
+  toJSON(): {
+    name: string
+    details: { error: string; code: string } | null
+    message: string
+    status: number
+  } {
     return {
       name: this.name,
       message: this.message,
@@ -110,7 +115,12 @@ export class AuthPKCEGrantCodeExchangeError extends CustomAuthError {
     this.details = details
   }
 
-  toJSON() {
+  toJSON(): {
+    name: string
+    details: { error: string; code: string } | null
+    message: string
+    status: number
+  } {
     return {
       name: this.name,
       message: this.message,

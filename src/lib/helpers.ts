@@ -23,7 +23,7 @@ const localStorageWriteTests = {
 /**
  * Checks whether localStorage is supported on this browser.
  */
-export const supportsLocalStorage = () => {
+export const supportsLocalStorage: () => (boolean) = () => {
   if (!isBrowser()) {
     return false
   }
