@@ -24,7 +24,7 @@
   "scripts": {
     "clean": "rimraf dist docs",
     "coverage": "echo \"run npm test\"",
-    "format": "prettier --write \"{src}/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "build": "genversion src/lib/version.ts --force --es6 && run-s clean format build:* && run-s lint",
     "build:main": "tsc -p tsconfig.json",
     "build:module": "tsc -p tsconfig.module.json",
