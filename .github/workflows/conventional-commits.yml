@@ -3,7 +3,7 @@ name: Check pull requests
 on:
   push:
     branches-ignore: # Run the checks on all branches but the protected ones
-      - master
+      - main
       - release/*
 
   pull_request_target:
