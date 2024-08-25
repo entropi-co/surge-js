@@ -81,8 +81,8 @@ jobs:
 
           echo "export const version = '$RELEASE_VERSION'" > src/lib/version.ts
 
-          npm ci
-          npm run build
+          yarn install --immutable
+          yarn build
 
           for f in package.json package-lock.json jsr.json
           do
