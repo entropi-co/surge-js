@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/entropi-co/surge-js/compare/v0.1.0...v0.1.1) (2024-08-26)
+
+
+### Bug Fixes
+
+* CHANGELOG.md version reset ([b83e03b](https://github.com/entropi-co/surge-js/commit/b83e03bf1451596efd4bff09d96ad4e251a55c43))
+* use yarn instead of npm ([63cb7c4](https://github.com/entropi-co/surge-js/commit/63cb7c4096098414c5cf907ed637a5cd0c537178))
+
 ## [0.1.0](https://github.com/entropi-co/surge-js/compare/v1.0.0...v0.1.0) (2024-08-26)
 
 
