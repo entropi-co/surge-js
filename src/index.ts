@@ -1,6 +1,5 @@
 import SurgeClient from './SurgeClient'
-import AuthClient from './AuthClient'
-export { SurgeClient, AuthClient }
+export { SurgeClient }
 export * from './lib/types'
 export * from './lib/errors'
 export {
