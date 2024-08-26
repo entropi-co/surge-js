@@ -7,7 +7,7 @@
 
 * release 0.1.0 ([08db189](https://github.com/entropi-co/surge-js/commit/08db1897da3a96ef909e131968fc055cf095e878))
 
-## 1.0.0 (2024-08-25)
+## 0.0.0 (2024-08-25)
 
 
 ### Features
