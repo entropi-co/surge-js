@@ -327,7 +327,7 @@ export default class SurgeClient {
             this.storageKey
           )
         }
-        res = await _request(this.fetch, 'POST', `${this.url}/sign_up/credentials`, {
+        res = await _request(this.fetch, 'POST', `${this.url}/v1/sign_up/credentials`, {
           headers: this.headers,
           redirectTo: credentials.options?.emailRedirectTo,
           body: {
@@ -417,7 +417,7 @@ export default class SurgeClient {
       }
     })()
     try {
-      const res = await _request(this.fetch, 'POST', `${this.url}/token?grant_type=credentials`, {
+      const res = await _request(this.fetch, 'POST', `${this.url}/v1/token?grant_type=credentials`, {
         headers: this.headers,
         body: body,
         transformResponse: _sessionResponsePassword,
@@ -475,7 +475,7 @@ export default class SurgeClient {
     const { data, error } = await _request(
       this.fetch,
       'POST',
-      `${this.url}/token?grant_type=pkce`,
+      `${this.url}/v1/token?grant_type=pkce`,
       {
         headers: this.headers,
         body: {
@@ -757,7 +757,7 @@ export default class SurgeClient {
   private async _getUser(jwt?: string): Promise<UserResponse> {
     try {
       if (jwt) {
-        return await _request(this.fetch, 'GET', `${this.url}/user`, {
+        return await _request(this.fetch, 'GET', `${this.url}/v1/user`, {
           headers: this.headers,
           jwt: jwt,
           transformResponse: _userResponse,
@@ -775,7 +775,7 @@ export default class SurgeClient {
           return { data: { user: null }, error: new AuthSessionMissingError() }
         }
 
-        return await _request(this.fetch, 'GET', `${this.url}/user`, {
+        return await _request(this.fetch, 'GET', `${this.url}/v1/user`, {
           headers: this.headers,
           jwt: data.session?.access_token ?? undefined,
           transformResponse: _userResponse,
@@ -843,7 +843,7 @@ export default class SurgeClient {
           )
         }
 
-        const { data, error: userError } = await _request(this.fetch, 'PUT', `${this.url}/user`, {
+        const { data, error: userError } = await _request(this.fetch, 'PUT', `${this.url}/v1/user`, {
           headers: this.headers,
           redirectTo: options?.emailRedirectTo,
           body: {
@@ -1163,7 +1163,7 @@ export default class SurgeClient {
     scope: 'global' | 'local' | 'others' = 'global'
   ): Promise<{ data: null; error: AuthError | null }> {
     try {
-      await _request(this.fetch, 'POST', `${this.url}/logout?scope=${scope}`, {
+      await _request(this.fetch, 'POST', `${this.url}/v1/logout?scope=${scope}`, {
         headers: this.headers,
         jwt,
         noResolveJson: true,
@@ -1284,7 +1284,7 @@ export default class SurgeClient {
 
           this._debug(debugName, 'refreshing attempt', attempt)
 
-          return await _request(this.fetch, 'POST', `${this.url}/token?grant_type=refresh`, {
+          return await _request(this.fetch, 'POST', `${this.url}/v1/token?grant_type=refresh`, {
             body: { refresh_token: refreshToken },
             headers: this.headers,
             transformResponse: _sessionResponse,
@@ -1332,7 +1332,7 @@ export default class SurgeClient {
       skipBrowserRedirect?: boolean
     }
   ) {
-    const url: string = await this._getUrlForProvider(`${this.url}/external`, provider, {
+    const url: string = await this._getUrlForProvider(`${this.url}/v1/external`, provider, {
       redirectTo: options.redirectTo,
       scopes: options.scopes,
       queryParams: options.queryParams,
