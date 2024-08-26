@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/entropi-co/surge-js/compare/v0.1.1...v0.2.0) (2024-08-26)
+
+
+### Features
+
+* remove AuthClient which is ambiguous and unnecessary. ([482c352](https://github.com/entropi-co/surge-js/commit/482c3522cb4e645f5f07dafa171085c75bdb03ad))
+
+
+### Bug Fixes
+
+* added version prefix of endpoints ([1431fa1](https://github.com/entropi-co/surge-js/commit/1431fa1281d9159550593e2e864a37f6c016ad09))
+* edited corporation name to Entropi Co. in LICENSE ([4986db2](https://github.com/entropi-co/surge-js/commit/4986db2438cc5943f8afca889addefa2cdd533fd))
+
 ## [0.1.1](https://github.com/entropi-co/surge-js/compare/v0.1.0...v0.1.1) (2024-08-26)
 
 
