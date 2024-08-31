@@ -209,7 +209,7 @@ export default class SurgeClient {
       })
     }
 
-    this.initialize()
+    void this.initialize()
   }
 
   private _debug(...args: any[]): SurgeClient {
@@ -417,11 +417,16 @@ export default class SurgeClient {
       }
     })()
     try {
-      const res = await _request(this.fetch, 'POST', `${this.url}/v1/token?grant_type=credentials`, {
-        headers: this.headers,
-        body: body,
-        transformResponse: _sessionResponsePassword,
-      })
+      const res = await _request(
+        this.fetch,
+        'POST',
+        `${this.url}/v1/token?grant_type=credentials`,
+        {
+          headers: this.headers,
+          body: body,
+          transformResponse: _sessionResponsePassword,
+        }
+      )
 
       const { data, error } = res
 
@@ -843,17 +848,22 @@ export default class SurgeClient {
           )
         }
 
-        const { data, error: userError } = await _request(this.fetch, 'PUT', `${this.url}/v1/user`, {
-          headers: this.headers,
-          redirectTo: options?.emailRedirectTo,
-          body: {
-            ...attributes,
-            code_challenge: codeChallenge,
-            code_challenge_method: codeChallengeMethod,
-          },
-          jwt: session.access_token,
-          transformResponse: _userResponse,
-        })
+        const { data, error: userError } = await _request(
+          this.fetch,
+          'PUT',
+          `${this.url}/v1/user`,
+          {
+            headers: this.headers,
+            redirectTo: options?.emailRedirectTo,
+            body: {
+              ...attributes,
+              code_challenge: codeChallenge,
+              code_challenge_method: codeChallengeMethod,
+            },
+            jwt: session.access_token,
+            transformResponse: _userResponse,
+          }
+        )
         if (userError) throw userError
         session.user = data.user as User
         await this._saveSession(session)
@@ -1295,6 +1305,7 @@ export default class SurgeClient {
           return (
             error &&
             isAuthRetryableFetchError(error) &&
+            error.code != 'refresh_token_revoked' &&
             // retryable only if the request can be sent before the backoff overflows the tick duration
             Date.now() + nextBackOffInterval - startedAt < AUTO_REFRESH_TICK_DURATION
           )
