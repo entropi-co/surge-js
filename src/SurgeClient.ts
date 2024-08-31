@@ -1305,6 +1305,7 @@ export default class SurgeClient {
           return (
             error &&
             isAuthRetryableFetchError(error) &&
+            error.code != 'refresh_token_revoked' &&
             // retryable only if the request can be sent before the backoff overflows the tick duration
             Date.now() + nextBackOffInterval - startedAt < AUTO_REFRESH_TICK_DURATION
           )
