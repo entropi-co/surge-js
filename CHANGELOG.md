@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/entropi-co/surge-js/compare/v0.2.0...v0.3.0) (2024-08-31)
+
+
+### Features
+
+* fix formattings and update fetch body of /v1/user ([f1eb6db](https://github.com/entropi-co/surge-js/commit/f1eb6db566ccd31c7d92a24116fe3e0e0042ca53))
+
+
+### Bug Fixes
+
+* _refreshAccessToken retrying to acquire revoked token. ([0d687bb](https://github.com/entropi-co/surge-js/commit/0d687bbdd90017a349b6e656f60e357a889d88d2))
+
 ## [0.2.0](https://github.com/entropi-co/surge-js/compare/v0.1.1...v0.2.0) (2024-08-26)
 
 
