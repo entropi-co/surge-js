@@ -75,6 +75,7 @@ const DEFAULT_OPTIONS: Omit<Required<SurgeClientOptions>, 'fetch' | 'storage' | 
   headers: DEFAULT_HEADERS,
   flowType: 'implicit',
   debug: false,
+  suppressGetSessionWarning: false,
   hasCustomAuthorizationHeader: false,
 }
 
@@ -155,6 +156,8 @@ export default class SurgeClient {
     if (typeof settings.debug === 'function') {
       this.logger = settings.debug
     }
+
+    this.suppressGetSessionWarning = settings.suppressGetSessionWarning ?? false
 
     this.persistSession = settings.persistSession
     this.storageKey = settings.storageKey
@@ -1569,10 +1572,12 @@ export default class SurgeClient {
       // finished and tests run endlessly. This can be prevented by calling
       // `unref()` on the returned object.
       ticker.unref()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
     } else if (typeof Deno !== 'undefined' && typeof Deno.unrefTimer === 'function') {
       // similar like for NodeJS, but with the Deno API
       // https://deno.land/api@latest?unstable&s=Deno.unrefTimer
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       Deno.unrefTimer(ticker)
     }

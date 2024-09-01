@@ -53,6 +53,8 @@ export type SurgeClientOptions = {
   flowType?: AuthFlowType
   /* If debug messages are emitted. Can be used to inspect the behavior of the library. If set to a function, the provided function will be used instead of `console.log()` to perform the logging. */
   debug?: boolean | ((message: string, ...args: any[]) => void)
+  /* suppresses warning from getSession().user */
+  suppressGetSessionWarning?: boolean
   /**
    * Provide your own locking mechanism based on the environment. By default no locking is done at this time.
    *
