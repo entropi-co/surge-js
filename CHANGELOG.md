@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/entropi-co/surge-js/compare/v0.3.0...v0.4.0) (2024-09-01)
+
+
+### Features
+
+* add suppressGetSessionWarning setting ([e3e8f06](https://github.com/entropi-co/surge-js/commit/e3e8f0644f485a7b726d6c2a66a01e29a5ca4f3f))
+
 ## [0.3.0](https://github.com/entropi-co/surge-js/compare/v0.2.0...v0.3.0) (2024-08-31)
 
 
