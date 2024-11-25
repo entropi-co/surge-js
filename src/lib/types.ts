@@ -285,6 +285,7 @@ export interface User {
   action_link?: string
   email?: string
   phone?: string
+  username?: string
   created_at: string
   confirmed_at?: string
   email_confirmed_at?: string

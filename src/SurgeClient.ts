@@ -1,4 +1,4 @@
-import { DEFAULT_HEADERS, EXPIRY_MARGIN, SURGE_URL, STORAGE_KEY } from './lib/constants'
+import { DEFAULT_HEADERS, EXPIRY_MARGIN, STORAGE_KEY, SURGE_URL } from './lib/constants'
 import {
   AuthError,
   AuthImplicitGrantRedirectError,
@@ -40,14 +40,11 @@ import { version } from './lib/version'
 import { LockAcquireTimeoutError, navigatorLock } from './lib/locks'
 
 import type {
-  AMREntry,
   AuthChangeEvent,
-  AuthenticatorAssuranceLevels,
   AuthFlowType,
   AuthResponse,
   AuthTokenResponsePassword,
   CallRefreshTokenResult,
-  SurgeClientOptions,
   InitializeResult,
   LockFunc,
   OAuthResponse,
@@ -59,6 +56,7 @@ import type {
   SignUpWithPasswordCredentials,
   Subscription,
   SupportedStorage,
+  SurgeClientOptions,
   User,
   UserAttributes,
   UserResponse,
@@ -157,6 +155,11 @@ export default class SurgeClient {
       this.logger = settings.debug
     }
 
+    if (settings.suppressGetSessionWarning) {
+      this._debug(
+        'suppressGetSessionWarning enabled. SurgeClient will not warn when accessing user of session from getSession()'
+      )
+    }
     this.suppressGetSessionWarning = settings.suppressGetSessionWarning ?? false
 
     this.persistSession = settings.persistSession
@@ -1327,14 +1330,13 @@ export default class SurgeClient {
   }
 
   private _isValidSession(maybeSession: unknown): maybeSession is Session {
-    const isValidSession =
+    return (
       typeof maybeSession === 'object' &&
       maybeSession !== null &&
       'access_token' in maybeSession &&
       'refresh_token' in maybeSession &&
       'expires_at' in maybeSession
-
-    return isValidSession
+    )
   }
 
   private async _handleProviderSignIn(
