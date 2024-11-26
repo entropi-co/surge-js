@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/entropi-co/surge-js/compare/v0.5.0...v0.5.1) (2024-11-26)
+
+
+### Bug Fixes
+
+* pkg fix ([51e592a](https://github.com/entropi-co/surge-js/commit/51e592a1f5aaae22e4b11875d62b1bd29be5f1a2))
+
 ## [0.5.0](https://github.com/entropi-co/surge-js/compare/v0.4.0...v0.5.0) (2024-11-26)
 
 
