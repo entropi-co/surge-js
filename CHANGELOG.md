@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/entropi-co/surge-js/compare/v0.4.0...v0.5.0) (2024-11-26)
+
+
+### Features
+
+* add username to User ([2d1ef6d](https://github.com/entropi-co/surge-js/commit/2d1ef6d73a25442a971cb5e6e8e9ecacc4611e81))
+
 ## [0.4.0](https://github.com/entropi-co/surge-js/compare/v0.3.0...v0.4.0) (2024-09-01)
 
 
